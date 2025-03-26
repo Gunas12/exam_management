@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    height: 70vh;
+    width: 50vw;
+   
+}
+.yourresult{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px ;
+    display: flex;
+    flex-direction: column;
+ 
+  
+}
+.result{
+    background-color: rgb(146, 171, 171);
+    font-size: 30px;
+    position: relative;
+    transform: translate(-50%, -100%);
+}

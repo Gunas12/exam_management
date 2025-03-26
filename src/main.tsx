@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+
 import "./index.css";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -11,7 +11,8 @@ import Dashboard from "./pages/Admin/Dashboard.tsx";
 import Exams from "./pages/Admin/Exams.tsx";
 import Results from "./pages/Admin/Results.tsx";
 import Tasks from "./pages/Tasks.tsx";
-import YourResult from "./pages/YourResult.jsx"
+import YourResult from "./pages/YourResult.jsx";
+import Layout from "./pages/Admin/Layout.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,10 +28,16 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/task",
+        path: "/exam",
         element: <Tasks />,
       },
-
+      { path: "/exam/result", element: <YourResult /> },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <Layout />,
+    children: [
       {
         path: "/admin",
         element: <Dashboard />,
@@ -43,16 +50,12 @@ const router = createBrowserRouter([
         path: "/admin/results",
         element: <Results />,
       },
-      {path:"/exam/result",
-        element :<YourResult />
-
-      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+
     <RouterProvider router={router} />
-  </StrictMode>
+
 );

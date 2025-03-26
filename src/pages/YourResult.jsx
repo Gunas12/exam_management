@@ -5,7 +5,7 @@ export default function YourResult() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-700 to-purple-500 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg max-w-3xl w-full p-6 md:p-8">
+      <div className="dark:bg-black  bg-white rounded-xl shadow-lg max-w-3xl w-full p-6 md:p-8">
         <div className="flex flex-col items-center">
           <div className="relative w-full max-w-md aspect-square mb-6">
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -47,7 +47,7 @@ export default function YourResult() {
                   <div className="w-12 h-12 bg-purple-400 flex items-center justify-center text-white font-bold rounded-t-md ml-1">
                     2
                   </div>
-                  <div className="w-12 h-16 bg-purple-300 flex items-center justify-center text-white font-bold rounded-t-md ml-1">
+                  <div className="w-12 h-16 bg-purple-300 flex items-center justify-center text-white font-bold  ml-1">
                     3
                   </div>
                 </div>
@@ -55,7 +55,7 @@ export default function YourResult() {
             </div>
           </div>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center">
+          <h1 className="dark:text-white text-2xl md:text-3xl font-bold text-gray-800 text-center rounded-full p-2 ">
             Your grade is {score}% success
           </h1>
         </div>

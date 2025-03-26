@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navItems = [
   {
@@ -47,7 +47,10 @@ const navItems = [
 export function AppSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const goHome = () => {
+    navigate(-1);
+  };
   return (
     <>
       {isMobileOpen && (
@@ -101,7 +104,7 @@ export function AppSidebar() {
           <Link
             to="/logout"
             className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
-            onClick={() => setIsMobileOpen(false)}
+            onClick={() => goHome()}
           >
             <LogOut className="h-5 w-5" />
             Log out

@@ -4,7 +4,7 @@ import { FileText, Plus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 
-const exams = [
+export const exams = [
   {
     id: 1,
     title: "Midterm Exam - OOP",
@@ -37,6 +37,22 @@ const exams = [
     questions: 25,
     duration: "60 min",
   },
+  {
+    id: 5,
+    title: "HTML",
+    module: "web development",
+    date: "Mar 19, 2024",
+    questions: 25,
+    duration: "20 min",
+  },
+  {
+    id: 6,
+    title: "CSS",
+    module: "web development",
+    date: "Mar 19, 2024",
+    questions: 25,
+    duration: "30 min",
+  },
 ];
 
 export default function Exams() {
@@ -51,7 +67,7 @@ export default function Exams() {
               Generate Exam With AI
             </Button>
           </Link>
-          <Link to="/admin/exam/create">
+          <Link to="/admin/exams/create">
             <Button variant="outline">
               <FileText className="mr-2 h-4 w-4" />
               Create Exam

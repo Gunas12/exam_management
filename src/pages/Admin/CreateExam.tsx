@@ -13,11 +13,18 @@ import {
   Plus,
   RotateCcw,
   Timer,
-  Trash2,
   Trophy,
 } from "lucide-react";
 import { QuestionEditor } from "@/components/question-editor";
-import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CreateExamPage() {
   const [questions, setQuestions] = useState([
@@ -51,7 +58,10 @@ export default function CreateExamPage() {
     duration: 30,
     topics: ["Inheritance", "Encapsulation", "Class and Object Concepts"],
   });
-
+  const [publishDialogOpen, setPublishDialogOpen] = useState(false);
+  const [savingDraft, setSavingDraft] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const navigate = useNavigate();
   const handleAddQuestion = () => {
     const newQuestion = {
       id: questions.length + 1,
@@ -100,6 +110,70 @@ export default function CreateExamPage() {
     }
   };
 
+  const handleSaveDraft = () => {
+    setSavingDraft(true);
+
+    setTimeout(() => {
+      setSavingDraft(false);
+
+      localStorage.setItem(
+        "examDraft",
+        JSON.stringify({
+          examDetails,
+          questions,
+        })
+      );
+
+      alert("Exam draft saved successfully!");
+    }, 1000);
+  };
+
+  const handlePublish = () => {
+    setPublishDialogOpen(true);
+  };
+
+  const confirmPublish = () => {
+    setPublishing(true);
+
+    const newExam = {
+      id: Date.now(),
+      title: examDetails.title,
+      module: examDetails.module,
+      questions: questions.length,
+      duration: `${examDetails.duration} min`,
+      date: new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+      type: "manual",
+    };
+
+    const savedExams = localStorage.getItem("teacherExams");
+    let currentExams = [];
+
+    if (savedExams) {
+      try {
+        currentExams = JSON.parse(savedExams);
+      } catch (error) {
+        console.error("Failed to parse saved exams:", error);
+      }
+    }
+
+    const updatedExams = [...currentExams, newExam];
+
+    // Save back to localStorage
+    localStorage.setItem("teacherExams", JSON.stringify(updatedExams));
+
+    // Simulate API call delay
+    setTimeout(() => {
+      setPublishing(false);
+      setPublishDialogOpen(false);
+
+      navigate("/exams");
+    }, 1500);
+  };
+
   return (
     <div className="p-6">
       <div className="flex items-center gap-2 mb-4">
@@ -116,11 +190,27 @@ export default function CreateExamPage() {
           <h1 className="text-2xl font-bold">Create Exam</h1>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
-            <Pencil className="mr-2 h-4 w-4" />
-            Save Draft
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleSaveDraft}
+            disabled={savingDraft}
+          >
+            {savingDraft ? (
+              <>Saving...</>
+            ) : (
+              <>
+                <Pencil className="mr-2 h-4 w-4" />
+                Save Draft
+              </>
+            )}
           </Button>
-          <Button className="bg-emerald-500 hover:bg-emerald-600" size="sm">
+          <Button
+            className="bg-emerald-500 hover:bg-emerald-600"
+            size="sm"
+            onClick={handlePublish}
+            disabled={publishing}
+          >
             <Trophy className="mr-2 h-4 w-4" />
             Publish Exam
           </Button>
@@ -166,8 +256,8 @@ export default function CreateExamPage() {
                         handleDeleteQuestion(question.id);
                       }}
                     >
-                      <Trash2 />
-                      <span className="sr-only text-black">Delete</span>
+                      <RotateCcw className="h-4 w-4" />
+                      <span className="sr-only">Delete</span>
                     </Button>
                     <div className="flex items-center gap-1">
                       <Button
@@ -394,6 +484,34 @@ export default function CreateExamPage() {
           </Card>
         </div>
       </div>
+
+      {/* Publish Confirmation Dialog */}
+      <Dialog open={publishDialogOpen} onOpenChange={setPublishDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Publish Exam</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to publish this exam? Once published, it
+              will be available to students.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setPublishDialogOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="bg-emerald-500 hover:bg-emerald-600"
+              onClick={confirmPublish}
+              disabled={publishing}
+            >
+              {publishing ? "Publishing..." : "Publish Exam"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

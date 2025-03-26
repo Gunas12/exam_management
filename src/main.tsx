@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+
 import "./index.css";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -11,7 +11,11 @@ import Dashboard from "./pages/Admin/Dashboard.tsx";
 import Exams from "./pages/Admin/Exams.tsx";
 import Results from "./pages/Admin/Results.tsx";
 import Tasks from "./pages/Tasks.tsx";
+<<<<<<< HEAD
 import YourResult from "./pages/YourResult.jsx"
+=======
+import Layout from "./pages/Admin/Layout.tsx";
+>>>>>>> 1c0080153c4652dcf1099744c5499bd76ab41c0f
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,9 +34,14 @@ const router = createBrowserRouter([
         path: "/task",
         element: <Tasks />,
       },
-
+    ],
+  },
+  {
+    path: "/admin",
+    element: <Layout />,
+    children: [
       {
-        path: "/admin",
+        path: "/admin/",
         element: <Dashboard />,
       },
       {

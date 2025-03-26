@@ -81,7 +81,7 @@ export default function Results() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {modules.map((module) => (
-          <Link key={module.id} href={`/modules/${module.id}`}>
+          <Link key={module.id} to={`admin/modules/${module.id}`}>
             <Card className="h-full cursor-pointer hover:border-emerald-500 transition-colors">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg">{module.title}</CardTitle>

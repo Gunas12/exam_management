@@ -14,7 +14,7 @@ import ModeToggle from "@/components/ui/mode-toggle";
 
 export default function Dashboard() {
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 dark:bg-black">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Welcome back Teacher 👋</h1>
         <div className="flex items-center gap-2">

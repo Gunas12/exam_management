@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function TestSelectionPage() {
@@ -41,7 +41,10 @@ export default function TestSelectionPage() {
       name: "React test",
     },
   ];
-
+ const navigate=useNavigate();
+  const handlechange = () => {
+    navigate("/exam");
+  }
   return (
     <div className="w-ful  flex flex-col  justify-center w-full">
      
@@ -61,7 +64,7 @@ export default function TestSelectionPage() {
                   {test.name}
                 </h2>
 
-                <Button
+                <Button onClick={handlechange}
                   asChild
                   className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8"
                 >

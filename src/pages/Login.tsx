@@ -11,14 +11,56 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
+import { useNavigate } from "react-router-dom";
 export default function Login({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("incorrect email or password");
+  const [error, setError] = useState("");
+const examniersNames=[
+  {
+    name:"ali",
+    password:"1334",
+  },
+  {
+    name:"vali",
+    password:"124445",
+  
+  },
+  {
+    name:"vusala",
+    password:"345",
+  
+  },
+  {
+    name:"admin",
+    password:'13345'
+  },
+
+]
+
+
+const navigate=useNavigate();
+const handleLogin = () => {
+    const user = examniersNames.find(user => user.name === userName && user.password === password);
+
+  if (user && user.name==="admin") {
+    navigate("/admin"); 
+  } 
+  else if(user){
+    navigate("/")
+  }
+  else if(user===null){
+    navigate("/login")
+
+  }
+   else {
+    setError("Incorrect username or password"); 
+  }
+};
 
   return (
     <div className="w-full flex justify-center items-center h-[100vh]">
@@ -32,14 +74,13 @@ export default function Login({
 
         <form className="space-y-4">
           <div className="space-y-1">
-            <label htmlFor="email" className="text-sm text-muted-foreground">
-              Email
+            <label htmlFor="text" className="text-sm text-muted-foreground">
+              Username
             </label>
             <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               className="border-gray-200 "
             />
           </div>
@@ -84,7 +125,7 @@ export default function Login({
             </div>
           </div>
 
-          <Button
+          <Button onClick={handleLogin}
             type="submit"
             className="w-full w-max-md bg-purple-600 hover:bg-purple-700 text-white border rounded-2xl"
           >

@@ -11,7 +11,7 @@ import Dashboard from "./pages/Admin/Dashboard.tsx";
 import Exams from "./pages/Admin/Exams.tsx";
 import Results from "./pages/Admin/Results.tsx";
 import Tasks from "./pages/Tasks.tsx";
-import YourResult from "./pages/YourResult.jsx";
+// import YourResult from "./pages/YourResult.jsx";
 import Layout from "./pages/Admin/Layout.tsx";
 const router = createBrowserRouter([
   {

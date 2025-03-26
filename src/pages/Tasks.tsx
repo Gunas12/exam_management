@@ -13,6 +13,8 @@ interface Question {
 
 export default function Tasks() {
 
+  console.log(myanswer)
+
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({})

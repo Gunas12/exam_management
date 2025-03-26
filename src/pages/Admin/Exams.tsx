@@ -42,7 +42,7 @@ const exams = [
 export default function Exams() {
   return (
     <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between ">
         <h1 className="text-2xl font-bold">Exams</h1>
         <div className="flex items-center gap-2">
           <Link to="/exams/generate">
@@ -51,10 +51,12 @@ export default function Exams() {
               Generate Exam With AI
             </Button>
           </Link>
-          <Button variant="outline">
-            <FileText className="mr-2 h-4 w-4" />
-            Create Exam
-          </Button>
+          <Link to="/admin/exam/create">
+            <Button variant="outline">
+              <FileText className="mr-2 h-4 w-4" />
+              Create Exam
+            </Button>
+          </Link>
         </div>
       </div>
 

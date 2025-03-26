@@ -12,6 +12,7 @@ import Exams from "./pages/Admin/Exams.tsx";
 import Results from "./pages/Admin/Results.tsx";
 import Tasks from "./pages/Tasks.tsx";
 import Layout from "./pages/Admin/Layout.tsx";
+import CreateExam from "./pages/Admin/CreateExam.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/results",
         element: <Results />,
+      },
+      {
+        path: "/admin/exam/create",
+        element: <CreateExam />,
       },
     ],
   },

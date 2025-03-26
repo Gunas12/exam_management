@@ -11,6 +11,7 @@ import Dashboard from "./pages/Admin/Dashboard.tsx";
 import Exams from "./pages/Admin/Exams.tsx";
 import Results from "./pages/Admin/Results.tsx";
 import Tasks from "./pages/Tasks.tsx";
+import Layout from "./pages/Admin/Layout.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,9 +30,14 @@ const router = createBrowserRouter([
         path: "/task",
         element: <Tasks />,
       },
-
+    ],
+  },
+  {
+    path: "/admin",
+    element: <Layout />,
+    children: [
       {
-        path: "/admin",
+        path: "/admin/",
         element: <Dashboard />,
       },
       {

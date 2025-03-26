@@ -9,7 +9,12 @@ export default function ModeToggle() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   return (
-    <Button variant="outline" size="icon" onClick={ChangeTheme}>
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={ChangeTheme}
+      className=" h-10 w-10 rounded-full border border-gray-500"
+    >
       {theme === "dark" ? (
         <Sun className="h-[1.2rem] w-[1.2rem]  transition-all " />
       ) : (

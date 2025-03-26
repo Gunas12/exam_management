@@ -12,6 +12,10 @@ interface Question {
 }
 
 export default function Tasks() {
+
+
+
+
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([])
   const [timer, setTimer] = useState("00:00")

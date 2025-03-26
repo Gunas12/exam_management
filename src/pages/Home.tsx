@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { exams } from "./Admin/Exams";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function TestSelectionPage() {

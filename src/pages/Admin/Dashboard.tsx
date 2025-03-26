@@ -9,14 +9,8 @@ import {
   BookOpen,
 } from "lucide-react";
 
-<<<<<<< HEAD
-const Dashboard = () => {
-  return <div ></div>;
-};
-=======
 import { Link } from "react-router-dom";
 import ModeToggle from "@/components/ui/mode-toggle";
->>>>>>> 1c0080153c4652dcf1099744c5499bd76ab41c0f
 
 export default function Dashboard() {
   return (

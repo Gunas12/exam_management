@@ -1,5 +1,4 @@
 import "../css/Tasks.css"
-
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -13,6 +12,8 @@ interface Question {
 }
 
 export default function Tasks() {
+
+
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({})
   const [markedQuestions, setMarkedQuestions] = useState<number[]>([0])

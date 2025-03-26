@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import Navbar from "../pages/Navbar";
+
 
 export default function TestSelectionPage() {
   const tests = [
@@ -44,7 +44,7 @@ export default function TestSelectionPage() {
 
   return (
     <div className="w-ful  flex flex-col  justify-center w-full">
-      <Navbar />
+     
       <div className="min-h-[calc(100vh-64px)] bg-gradient-to-b0">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 md:mb-12 dark:text-white">
